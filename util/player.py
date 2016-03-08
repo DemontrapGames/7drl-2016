@@ -1,7 +1,8 @@
 from random import randint
 
+
 class Creature():
-    def __init__(self, x, y,
+    def __init__(self, x, y, char
                  hp, str, def
                  spd, mgk=0, lck=0):
         self.x = x

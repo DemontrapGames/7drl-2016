@@ -1,10 +1,5 @@
 import libtcodpy as libtcod
-
-#screen size
-SCREEN_WIDTH = 80
-SCREEN_HEIGHT = 50
-
-LIMIT_FPS = 20
+import util.config as config
 
 def handle_keys():
     global playerx, playery
@@ -32,11 +27,11 @@ def handle_keys():
 
 ### Initialization and Main Loop ###
 libtcod.console_set_custom_font('terminal10x10_gs_tc.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
-libtcod.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, 'The trap of the 7 lords', False)
-libtcod.sys_set_fps(LIMIT_FPS)
+libtcod.console_init_root(config.SCREEN_WIDTH, config.SCREEN_HEIGHT, 'The Trap of the 7 lords', False)
+libtcod.sys_set_fps(config.LIMIT_FPS)
 
-playerx = SCREEN_WIDTH/2
-playery = SCREEN_HEIGHT/2
+playerx = config.SCREEN_WIDTH/2
+playery = config.SCREEN_HEIGHT/2
 
 while not libtcod.console_is_window_closed():
 
@@ -50,17 +45,3 @@ while not libtcod.console_is_window_closed():
     exit = handle_keys()
     if exit:
         break
-
-### Code for map generation ###
-MAP_WIDTH = 80
-MAP_HEIGHT = 45
-
-color_dark_wall = libtcod.Color(0, 0, 100)
-color_dark_ground = libtcod.Color(50, 50, 150)
-
-class Tile:
-    def __init__(self, blocked, block_sight = None):
-        self.blocked = blocked
-
-        if block_sight is None: block_sight = blocked
-        self.block_sight = block_sight
