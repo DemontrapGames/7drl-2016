@@ -1,5 +1,7 @@
 import libtcodpy as libtcod
 
+player = None
+
 currentFloorNumber = 0 # the current floor that the player is on
 floors = [] # list to hold all of the floors
 

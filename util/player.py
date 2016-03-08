@@ -1,16 +1,16 @@
 from random import randint
-
+import util.config as config
 
 class Creature():
-    def __init__(self, x, y, char
-                 hp, str, def
+    def __init__(self, x, y, char,
+                 hp, strength, defense,
                  spd, mgk=0, lck=0):
         self.x = x
         self.y = y
 
         self.hp = hp
-        self.str = str
-        self.def = def
+        self.strength = strength
+        self.defense = defense
         self.spd = spd
         self.inv = None
 
@@ -33,20 +33,26 @@ class Creature():
         if self.inv is not None:
             for i in self.inv:
                 if i.equipped and \
-                   i.str > 0:
-                    return i.str + self.str
+                   i.strength > 0:
+                    return i.strength + self.strength
 
     def getDef(self):
         if self.inv is not None:
             for i in self.inv:
                 if i.equipped and \
-                   i.def > 0:
-                    return i.def + self.def
+                   i.defense > 0:
+                    return i.defense + self.defense
+
+    def setPos(self, x, y):
+        self.x = x
+        self.y = y
 
 
 class Player(Creature):
-    def __init__(self):
-        super(Player, self).__init__()
+    def __init__(self, class_type):
+        self.class_type = class_type
+#        stats = randomize.makeStats(class_type)
+        super(Player, self).__init__(0, 0, "@", 12, 5, 5, 2)
         self.inv = []
         self.equipped = []
 
