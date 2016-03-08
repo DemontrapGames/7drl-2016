@@ -35,7 +35,7 @@ def handle_keys():
     elif libtcod.console_is_key_pressed(libtcod.KEY_RIGHT):
         playerx += 1
 
-    key = key = libtcod.console_wait_for_keypress(True)
+    key = libtcod.console_wait_for_keypress(True)
     if key.vk == libtcod.KEY_ENTER and key.lalt:
         #Alt+Enter: toggle fullscreen
         libtcod.console_set_fullscreen(not libtcod.console_is_fullscreen())
