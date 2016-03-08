@@ -29,20 +29,21 @@ def handle_keys():
 libtcod.console_set_custom_font('terminal10x10_gs_tc.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
 libtcod.console_init_root(config.SCREEN_WIDTH, config.SCREEN_HEIGHT, 'The Trap of the 7 lords', False)
 libtcod.sys_set_fps(config.LIMIT_FPS)
+con = libtcod.console_new(config.SCREEN_WIDTH, config.SCREEN_HEIGHT)
 
 playerx = config.SCREEN_WIDTH/2
 playery = config.SCREEN_HEIGHT/2
 
 while not libtcod.console_is_window_closed():
 
-    libtcod.console_set_default_foreground(0, libtcod.white)
-    libtcod.console_put_char(0, playerx, playery, '@', libtcod.BKGND_NONE)
+    libtcod.console_set_default_foreground(con, libtcod.white)
+    libtcod.console_put_char(con, playerx, playery, '@', libtcod.BKGND_NONE)
 
+    libtcod.console_blit(con, 0, 0, config.SCREEN_WIDTH, config.SCREEN_HEIGHT, 0, 0, 0)
     libtcod.console_flush()
 
-    libtcod.console_put_char(0, playerx, playery, ' ', libtcod.BKGND_NONE)
+    libtcod.console_put_char(con, playerx, playery, ' ', libtcod.BKGND_NONE)
 
     exit = handle_keys()
     if exit:
         break
-
