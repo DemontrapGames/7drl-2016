@@ -66,7 +66,7 @@ def render_all():
             else:
                 libtcod.console_set_char_background(con, x, y, config.color_dark_ground, libtcod.BKGND_SET )
 
-     y = 1
+    y = 1
     for (line, color) in game_msgs:
         libtcod.console_set_default_foreground(panel, color)
         libtcod.console_print_ex(panel, MSG_X, y, libtcod.BKGND_NONE, libtcod.LEFT, line)
