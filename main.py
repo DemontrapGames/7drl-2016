@@ -1,5 +1,7 @@
 import libtcodpy as libtcod
 import util.config as config
+import util.floor as floor
+import util.player as player
 
 def handle_keys():
     global playerx, playery
@@ -30,6 +32,13 @@ libtcod.console_set_custom_font('terminal10x10_gs_tc.png', libtcod.FONT_TYPE_GRE
 libtcod.console_init_root(config.SCREEN_WIDTH, config.SCREEN_HEIGHT, 'The Trap of the 7 lords', False)
 libtcod.sys_set_fps(config.LIMIT_FPS)
 con = libtcod.console_new(config.SCREEN_WIDTH, config.SCREEN_HEIGHT)
+panel = libtcod.console_new(SCREEN_WIDTH, PANEL_HEIGHT)
+
+floor.make_map()
+
+game_msgs = []
+
+message('Welcome', libtcod.red)
 
 playerx = config.SCREEN_WIDTH/2
 playery = config.SCREEN_HEIGHT/2

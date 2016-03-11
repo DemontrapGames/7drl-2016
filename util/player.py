@@ -1,5 +1,7 @@
 from random import randint
 import util.config as config
+import libtcodpy as libtcod
+import util.floor as floor
 
 class Creature():
     def __init__(self, x, y, char,
@@ -67,4 +69,3 @@ class Player(Creature):
                     if type(e) == type(o):
                         self.inv.append(e)
                         self.equipped.remove(e)
-            
