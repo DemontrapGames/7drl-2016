@@ -1,4 +1,6 @@
 import libtcodpy as libtcod
+import textwrap
+import util.config as config
 
 def render_bar(x, y, total_width, name, value, maximum, bar_color, back_color):
     #render a bar (HP, experience, etc). first calculate the width of the bar
@@ -22,12 +24,12 @@ def render_bar(x, y, total_width, name, value, maximum, bar_color, back_color):
 
 def message(new_msg, color = libtcod.white):
     #split the message if necessary, among multiple lines
-    new_msg_lines = textwrap.wrap(new_msg, MSG_WIDTH)
+    new_msg_lines = textwrap.wrap(new_msg, config.MSG_WIDTH)
 
     for line in new_msg_lines:
         #if the buffer is full, remove the first line to make room for the new one
-        if len(game_msgs) == MSG_HEIGHT:
-            del game_msgs[0]
+        if len(config.game_msgs) == config.MSG_HEIGHT:
+            del config.game_msgs[0]
 
         #add the new line as a tuple, with the text and the color
-        game_msgs.append( (line, color) )
+        config.game_msgs.append( (line, color) )

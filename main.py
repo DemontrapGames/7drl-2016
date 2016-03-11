@@ -36,8 +36,6 @@ panel = libtcod.console_new(config.SCREEN_WIDTH, config.PANEL_HEIGHT)
 
 floor.make_map()
 
-game_msgs = []
-
 gui.message('Welcome', libtcod.red)
 
 playerx = config.SCREEN_WIDTH/2
